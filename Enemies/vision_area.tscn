@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bc18ui4nh8hli"]
+
+[ext_resource type="Script" uid="uid://dy1chft3tlyaj" path="res://Enemies/Scripts/vision_area.gd" id="1_gvod7"]
+
+[node name="VisionArea" type="Area2D" unique_id=690078332]
+script = ExtResource("1_gvod7")

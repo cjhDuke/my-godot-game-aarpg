@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cq4s5v6kefos"]
+
+[ext_resource type="Script" uid="uid://cquj18sc02g70" path="res://title_scene/splash_screen.gd" id="1_afi8f"]
+[ext_resource type="Texture2D" uid="uid://bwr2wcrpxydck" path="res://title_scene/sprite/title.png" id="2_b00r4"]
+[ext_resource type="AudioStream" uid="uid://tc71plvobpu2" path="res://Levels/music/example_music_01.ogg" id="3_n7kyx"]
+
+[sub_resource type="Animation" id="Animation_cyax8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s08wv"]
+resource_name = "splash"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.9802322e-08, 0.10000005, 0.20000002, 0.30000004, 0.40000004, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_n7kyx")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b00r4"]
+_data = {
+&"RESET": SubResource("Animation_cyax8"),
+&"splash": SubResource("Animation_s08wv")
+}
+
+[node name="SplashScreen" type="Control" unique_id=981183440]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_afi8f")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=661004922]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 269.0
+
+[node name="MyLogo" type="Control" parent="." unique_id=646192968]
+anchors_preset = 0
+offset_left = 206.0
+offset_top = 93.0
+offset_right = 246.0
+offset_bottom = 133.0
+
+[node name="Sprite2D" type="Sprite2D" parent="MyLogo" unique_id=215520407]
+position = Vector2(28, 42)
+texture = ExtResource("2_b00r4")
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MyLogo" unique_id=1039879271]
+libraries/ = SubResource("AnimationLibrary_b00r4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MyLogo" unique_id=163943852]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=450763036]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 64.0

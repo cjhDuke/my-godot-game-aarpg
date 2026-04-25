@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://c8wcg7eoiw2p7"]
+
+[ext_resource type="Texture2D" uid="uid://dltqhcdetgsyn" path="res://Interactables/dungeon/dungeon_props.png" id="1_j5t30"]
+[ext_resource type="Script" uid="uid://dtgbjt1al3hny" path="res://Interactables/dungeon/scripts/locked_door.gd" id="1_roqkn"]
+[ext_resource type="Script" uid="uid://dyqfi00yypl4a" path="res://GeneralNodes/PersistentDataHelper/persistent-data-handler.gd" id="2_4tjue"]
+[ext_resource type="Resource" uid="uid://cioscdc7t737r" path="res://Item/key_dungeon.tres" id="2_tn8m2"]
+[ext_resource type="AudioStream" uid="uid://burl01jhe3k2s" path="res://Interactables/dungeon/locked_door.wav" id="3_ahkuk"]
+[ext_resource type="AudioStream" uid="uid://b5p1bf03vwqf2" path="res://Interactables/dungeon/unlock_door.wav" id="4_lvvq8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tjue"]
+size = Vector2(64, 62)
+
+[sub_resource type="Animation" id="Animation_tn8m2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ahkuk"]
+resource_name = "close_door"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lvvq8"]
+resource_name = "closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6y7ik"]
+resource_name = "open_door"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_arbgx"]
+resource_name = "opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6y7ik"]
+_data = {
+&"RESET": SubResource("Animation_tn8m2"),
+&"close_door": SubResource("Animation_ahkuk"),
+&"closed": SubResource("Animation_lvvq8"),
+&"open_door": SubResource("Animation_6y7ik"),
+&"opened": SubResource("Animation_arbgx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roqkn"]
+size = Vector2(32, 20)
+
+[node name="LockedDoor" type="Node2D" unique_id=1727059056]
+process_mode = 3
+script = ExtResource("1_roqkn")
+key_item = ExtResource("2_tn8m2")
+locked_audio = ExtResource("3_ahkuk")
+open_audio = ExtResource("4_lvvq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1758609902]
+position = Vector2(32, -40)
+texture = ExtResource("1_j5t30")
+hframes = 7
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1465095677]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=996487287]
+position = Vector2(32, -29)
+shape = SubResource("RectangleShape2D_4tjue")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1285904408]
+libraries/ = SubResource("AnimationLibrary_6y7ik")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1547696795]
+
+[node name="PersistentDataHandler" type="Node" parent="." unique_id=1570389848]
+script = ExtResource("2_4tjue")
+metadata/_custom_type_script = "uid://dyqfi00yypl4a"
+
+[node name="InteractArea2D" type="Area2D" parent="." unique_id=1176927881]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea2D" unique_id=43895783]
+position = Vector2(32, -8)
+shape = SubResource("RectangleShape2D_roqkn")
+debug_color = Color(0.554932, 0.5613825, 3.85046e-07, 0.41960785)

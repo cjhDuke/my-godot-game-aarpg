@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://mcgnfpcmdpca"]
+
+[ext_resource type="Script" uid="uid://d3e4sue7svcfx" path="res://Item/item_effects/item_effect.gd" id="1_0g6u6"]
+[ext_resource type="Script" uid="uid://trf3lqx42dev" path="res://Item/scripts/item_data.gd" id="1_h2qc5"]
+[ext_resource type="Script" uid="uid://dgqy5wqqju5n5" path="res://Item/item_effects/item_effect_heal.gd" id="2_46dtp"]
+[ext_resource type="Texture2D" uid="uid://3xakhdg10kfd" path="res://Item/sprites/items.png" id="2_nish4"]
+[ext_resource type="AudioStream" uid="uid://dln04kj52ox3h" path="res://Item/item_effects/hp-up.wav" id="3_46dtp"]
+
+[sub_resource type="Resource" id="Resource_46dtp"]
+script = ExtResource("2_46dtp")
+heal_amount = 2
+audio = ExtResource("3_46dtp")
+metadata/_custom_type_script = "uid://dgqy5wqqju5n5"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyqil"]
+atlas = ExtResource("2_nish4")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_h2qc5")
+name = "Potion"
+description = "This red drink restores your health !"
+texture = SubResource("AtlasTexture_uyqil")
+effects = Array[ExtResource("1_0g6u6")]([SubResource("Resource_46dtp")])
+metadata/_custom_type_script = "uid://trf3lqx42dev"

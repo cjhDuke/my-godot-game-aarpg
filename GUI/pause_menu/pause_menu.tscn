@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://fft2clkfyt2x"]
+
+[ext_resource type="Script" uid="uid://dakb76x6i1o0v" path="res://GUI/pause_menu/pause_menu.gd" id="1_4w82k"]
+[ext_resource type="Texture2D" uid="uid://3xakhdg10kfd" path="res://Item/sprites/items.png" id="2_yiq8o"]
+[ext_resource type="Script" uid="uid://b51mtob3pito7" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="3_36pfd"]
+[ext_resource type="PackedScene" uid="uid://ceoaksai3yr1" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_rsqrg"]
+[ext_resource type="Resource" uid="uid://blj4h7rnd0fmh" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="4_ewgu5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsqrg"]
+atlas = ExtResource("2_yiq8o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36pfd"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_rsqrg")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=753687118]
+process_mode = 3
+script = ExtResource("1_4w82k")
+
+[node name="Control" type="Control" parent="." unique_id=855320711]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1876224932]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17254902, 0.18039216, 0.18431373, 0.34117648)
+
+[node name="Label" type="Label" parent="Control" unique_id=751088378]
+modulate = Color(1, 1, 1, 0.654902)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.28300002
+anchor_right = 0.5
+anchor_bottom = 0.28300002
+offset_left = -185.0
+offset_top = -50.410004
+offset_right = -109.0
+offset_bottom = -27.410004
+grow_horizontal = 2
+grow_vertical = 2
+text = "[ Paused ]"
+
+[node name="ItemDescription" type="Label" parent="Control" unique_id=237875978]
+modulate = Color(1, 1, 1, 0.654902)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.28300002
+anchor_right = 0.5
+anchor_bottom = 0.28300002
+offset_left = -206.0
+offset_top = 106.59
+offset_right = -28.0
+offset_bottom = 129.59
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=924006760]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 90.0
+offset_right = 230.0
+offset_bottom = 178.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_36pfd")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer" unique_id=892202882]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_36pfd")
+data = ExtResource("4_ewgu5")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" unique_id=1316713842 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" unique_id=105197444 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" unique_id=1052857413 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" unique_id=1204484951 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" unique_id=1079501563 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" unique_id=1268202563 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=373527396]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18800001
+anchor_top = 0.337
+anchor_right = 0.18800001
+anchor_bottom = 0.337
+offset_left = -56.240005
+offset_top = 130.01
+offset_right = 97.759995
+offset_bottom = 161.01
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button_Save" type="Button" parent="Control/HBoxContainer" unique_id=851889437]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Save"
+
+[node name="Button_Load" type="Button" parent="Control/HBoxContainer" unique_id=1937892054]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Load"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control" unique_id=1407237464]
+max_polyphony = 4

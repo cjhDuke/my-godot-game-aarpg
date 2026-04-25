@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://d31ayrd2auxyg"]
+
+[ext_resource type="Script" uid="uid://chb4cw3py5cb0" path="res://npc/scripts/patrol_location.gd" id="1_xdeq0"]
+[ext_resource type="FontFile" uid="uid://dplj0nmib8k77" path="res://GUI/fonts/m5x7.ttf" id="2_rlkg0"]
+
+[sub_resource type="Gradient" id="Gradient_ipyvv"]
+offsets = PackedFloat32Array(0.4090909, 0.8474026, 0.9512987)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xdeq0"]
+gradient = SubResource("Gradient_ipyvv")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="PatrolLocation" type="Node2D" unique_id=611155758]
+show_behind_parent = true
+script = ExtResource("1_xdeq0")
+wait_time = 0.56
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=752678417]
+self_modulate = Color(1, 1, 1, 0.5137255)
+texture = SubResource("GradientTexture2D_xdeq0")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D" unique_id=702013180]
+points = PackedVector2Array(0, 0, 12, 0)
+width = 1.0
+default_color = Color(1, 1, 1, 0.5058824)
+
+[node name="Label" type="Label" parent="Sprite2D" unique_id=1961271123]
+offset_left = -20.0
+offset_top = -9.0
+offset_right = 20.0
+offset_bottom = 14.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.654902)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 0
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Sprite2D" unique_id=1848007475]
+offset_left = -19.0
+offset_top = 6.0
+offset_right = 25.0
+offset_bottom = 29.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.654902)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_rlkg0")
+theme_override_font_sizes/font_size = 9
+text = "wait: 0.56s"
+horizontal_alignment = 1

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cioscdc7t737r"]
+
+[ext_resource type="Script" uid="uid://d3e4sue7svcfx" path="res://Item/item_effects/item_effect.gd" id="1_jvtae"]
+[ext_resource type="Script" uid="uid://trf3lqx42dev" path="res://Item/scripts/item_data.gd" id="2_snk6a"]
+[ext_resource type="Texture2D" uid="uid://3xakhdg10kfd" path="res://Item/sprites/items.png" id="3_snk6a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mph5c"]
+atlas = ExtResource("3_snk6a")
+region = Rect2(224, 0, 32, 32)
+
+[resource]
+script = ExtResource("2_snk6a")
+name = "Dungeon Key"
+description = "Looks like a normal key. Who knows what kind of door it will unlock?"
+texture = SubResource("AtlasTexture_mph5c")
+metadata/_custom_type_script = "uid://trf3lqx42dev"
