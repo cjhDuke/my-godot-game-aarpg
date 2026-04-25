@@ -11,6 +11,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func TakeDamage(hurt_box: HurtBox) -> void:
-	#print( "TakeDamage: " , damage )
+func take_damage(hurt_box: HurtBox) -> void:
+	#print( "take_damage: " , damage )
 	Damaged.emit(hurt_box)

@@ -21,7 +21,7 @@ signal player_damaged( hurt_box : HurtBox )
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerManager.player = self
-	state_machine.Initialize(self)
+	state_machine.initialize(self)
 	hit_box.Damaged.connect( _take_damage )
 	update_hp(99)
 	pass # Replace with function body.
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
-func SetDirection() -> bool:
+func set_direction() -> bool:
 	
 	if direction == Vector2.ZERO:
 		return false
@@ -65,12 +65,12 @@ func SetDirection() -> bool:
 	return true
 
 	
-func UpdateAnimation( state : String ) -> void:
-	animation_player.play(state + "_" + AnimDirection())
+func update_animation( state : String ) -> void:
+	animation_player.play(state + "_" + anim_direction())
 	pass
 	
 	
-func AnimDirection() -> String:
+func anim_direction() -> String:
 	if cardinal_direction == Vector2.DOWN:
 		return "down"
 	elif cardinal_direction == Vector2.UP:

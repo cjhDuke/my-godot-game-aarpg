@@ -65,7 +65,7 @@ func _on_player_enter() -> void:
 			or state_machine.current_state is EnemyStateDestroy
 	):
 		return 
-	state_machine.ChangeState( self )
+	state_machine.change_state( self )
 	pass
 
 

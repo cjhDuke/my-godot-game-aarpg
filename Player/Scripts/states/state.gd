@@ -9,25 +9,25 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 ## What happens when the player enters this State
-func Enter() -> void:
+func enter() -> void:
 	pass
 
 ## What happens when the player exits this State
-func Exit() -> void:
+func exit() -> void:
 	pass
 
-## Optional one-time initialization hook called by PlayerStateMachine.Initialize
+## Optional one-time initialization hook called by PlayerStateMachine.initialize
 func init() -> void:
 	pass
 	
 ## What heppens during the process update in the State
-func Process(_delta : float) -> State:
+func process(_delta : float) -> State:
 	return null
 	
 ## What happens during the _physics_process update in the State
-func Physics( _delta : float) -> State:
+func physics( _delta : float) -> State:
 	return null
 	
 ## What happens whit input events in this State
-func HandleInput( _event : InputEvent) -> State:
+func handle_input( _event : InputEvent) -> State:
 	return null

@@ -24,7 +24,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 ## What happens when the player enters this State
-func Enter() -> void:
+func enter() -> void:
 	timer = charge_duration
 	is_attacking = false
 	walking = false
@@ -38,14 +38,14 @@ func Enter() -> void:
 	pass
 
 ## What happens when the player exits this State
-func Exit() -> void:
+func exit() -> void:
 	charge_hurt_box.monitoring = false
 	charge_spin_hurt_box.monitoring = false
 	spin_effect_sprite_2d.visible = false
 	gpu_particles_2d.emitting = false
 	pass
 
-## Optional one-time initialization hook called by PlayerStateMachine.Initialize
+## Optional one-time initialization hook called by PlayerStateMachine.initialize
 func init() -> void:
 	gpu_particles_2d.emitting = false
 	particles = gpu_particles_2d.process_material as ParticleProcessMaterial
@@ -53,7 +53,7 @@ func init() -> void:
 	pass
 	
 ## What heppens during the process update in the State
-func Process(_delta : float) -> State:
+func process(_delta : float) -> State:
 	
 	if timer > 0:
 		timer -= _delta
@@ -64,21 +64,21 @@ func Process(_delta : float) -> State:
 	if is_attacking == false:
 		if player.direction == Vector2.ZERO:
 			walking = false
-			player.UpdateAnimation("charge")
-		elif player.SetDirection() or walking == false:
+			player.update_animation("charge")
+		elif player.set_direction() or walking == false:
 			walking = true
-			player.UpdateAnimation("charge_walk")
+			player.update_animation("charge_walk")
 			pass
 	
 	player.velocity = player.direction * move_speed
 	return null
 	
 ## What happens during the _physics_process update in the State
-func Physics( _delta : float) -> State:
+func physics( _delta : float) -> State:
 	return null
 	
 ## What happens whit input events in this State
-func HandleInput( _event : InputEvent) -> State:
+func handle_input( _event : InputEvent) -> State:
 	if _event.is_action_released("attack"):
 		if timer > 0:
 			return idle
@@ -97,7 +97,7 @@ func charge_attack() -> void:
 	player.make_invulnerable(_duration)
 	charge_spin_hurt_box.monitoring = true
 	await get_tree().create_timer(_duration * 0.875).timeout
-	state_machine.ChangeState(idle)
+	state_machine.change_state(idle)
 	pass
 
 func get_spin_frame() -> float:

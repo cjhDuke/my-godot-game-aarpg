@@ -24,7 +24,7 @@ func can_start_transition() -> bool:
 		return false
 	return Time.get_ticks_msec() - _last_level_loaded_ms >= transition_cooldown_ms
 
-func ChangeTilemapBounds(bounds: Array[Vector2]) -> void:
+func change_tilemap_bounds(bounds: Array[Vector2]) -> void:
 	current_tilemap_bounds = bounds
 	TileMapBoundsChanged.emit(bounds)
 

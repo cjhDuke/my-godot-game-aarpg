@@ -13,19 +13,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	ChangeState( current_state.Process( delta ) )
+	change_state( current_state.process( delta ) )
 	pass
 	
 	
 func _physics_process(delta: float) -> void:
-	ChangeState( current_state.Physics( delta ) )
+	change_state( current_state.physics( delta ) )
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
-	ChangeState( current_state.HandleInput( event ) )
+	change_state( current_state.handle_input( event ) )
 	pass
 	
-func Initialize( _player : Player) -> void:
+func initialize( _player : Player) -> void:
 	states = []
 	
 	for c in get_children():
@@ -41,16 +41,16 @@ func Initialize( _player : Player) -> void:
 	for state in states:
 		state.init()
 		
-	ChangeState( states[0] )
+	change_state( states[0] )
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
-func ChangeState( new_state : State) ->void:
+func change_state( new_state : State) ->void:
 	if new_state == null || new_state == current_state:
 		return
 		
 	if current_state:
-		current_state.Exit()
+		current_state.exit()
 	
 	prev_state = current_state
 	current_state = new_state
-	current_state.Enter()
+	current_state.enter()
