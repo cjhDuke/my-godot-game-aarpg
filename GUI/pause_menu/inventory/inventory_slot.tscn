@@ -7,6 +7,27 @@
 atlas = ExtResource("1_eqhwg")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="FontFile" id="FontFile_d72hl"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+
 [node name="InventorySlot" type="Button" unique_id=105197444]
 custom_minimum_size = Vector2(32, 32)
 anchors_preset = 15
@@ -30,6 +51,7 @@ stretch_mode = 3
 layout_mode = 0
 offset_right = 31.0
 offset_bottom = 23.0
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = SubResource("FontFile_d72hl")
+theme_override_font_sizes/font_size = 12
 text = "99"
 horizontal_alignment = 2

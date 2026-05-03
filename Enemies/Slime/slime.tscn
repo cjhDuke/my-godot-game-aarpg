@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://devv3gbg7xlg7" path="res://Enemies/Scripts/states/enemy_state_stun.gd" id="10_pydiu"]
 [ext_resource type="Script" uid="uid://dlspkm2wj7d6b" path="res://Enemies/Scripts/states/enemy_state_destroy.gd" id="12_843tw"]
 [ext_resource type="Script" uid="uid://b5hmgcv8b3rue" path="res://Enemies/Scripts/drop_data.gd" id="13_nsi17"]
-[ext_resource type="Resource" uid="uid://cdxl2akpqptbo" path="res://Item/gem.tres" id="14_vjyi2"]
 [ext_resource type="Resource" uid="uid://safi8ok7u5xk" path="res://Item/apple.tres" id="15_vjyi2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1krp"]
@@ -662,12 +661,6 @@ _data = {
 &"walk_up": SubResource("Animation_n8fnr")
 }
 
-[sub_resource type="Resource" id="Resource_yynal"]
-script = ExtResource("13_nsi17")
-item = ExtResource("14_vjyi2")
-max_amount = 4
-metadata/_custom_type_script = "uid://b5hmgcv8b3rue"
-
 [sub_resource type="Resource" id="Resource_67htc"]
 script = ExtResource("13_nsi17")
 item = ExtResource("15_vjyi2")
@@ -793,7 +786,7 @@ next_state = NodePath("../idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=1434732567]
 script = ExtResource("12_843tw")
-drops = Array[ExtResource("13_nsi17")]([SubResource("Resource_yynal"), SubResource("Resource_67htc")])
+drops = Array[ExtResource("13_nsi17")]([SubResource("Resource_67htc")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=715979421]
 max_polyphony = 4

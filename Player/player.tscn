@@ -1501,6 +1501,7 @@ hframes = 8
 libraries/ = SubResource("AnimationLibrary_m0h3t")
 
 [node name="HeldItem" type="Node2D" parent="Sprite2D" unique_id=1493721842]
+visible = false
 position = Vector2(0, 20)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/HeldItem" unique_id=1890627765]
