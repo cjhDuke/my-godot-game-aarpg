@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://devv3gbg7xlg7" path="res://Enemies/Scripts/states/enemy_state_stun.gd" id="8_l2k1h"]
 [ext_resource type="Script" uid="uid://dlspkm2wj7d6b" path="res://Enemies/Scripts/states/enemy_state_destroy.gd" id="9_4i25o"]
 [ext_resource type="Script" uid="uid://b5hmgcv8b3rue" path="res://Enemies/Scripts/drop_data.gd" id="10_p7r07"]
-[ext_resource type="Resource" uid="uid://cdxl2akpqptbo" path="res://Item/gem.tres" id="11_k7df2"]
 [ext_resource type="Resource" uid="uid://safi8ok7u5xk" path="res://Item/apple.tres" id="12_dgb7x"]
 [ext_resource type="PackedScene" uid="uid://bc18ui4nh8hli" path="res://Enemies/vision_area.tscn" id="14_3xcr1"]
 [ext_resource type="Script" uid="uid://d4kcklhtmabyk" path="res://Enemies/Scripts/states/enemy_state_chase.gd" id="14_fuxiv"]
@@ -619,12 +618,6 @@ _data = {
 &"walk_up": SubResource("Animation_n8fnr")
 }
 
-[sub_resource type="Resource" id="Resource_yynal"]
-script = ExtResource("10_p7r07")
-item = ExtResource("11_k7df2")
-max_amount = 4
-metadata/_custom_type_script = "uid://b5hmgcv8b3rue"
-
 [sub_resource type="Resource" id="Resource_67htc"]
 script = ExtResource("10_p7r07")
 item = ExtResource("12_dgb7x")
@@ -762,7 +755,7 @@ next_state = NodePath("../idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=1434732567]
 script = ExtResource("9_4i25o")
-drops = Array[ExtResource("10_p7r07")]([SubResource("Resource_yynal"), SubResource("Resource_67htc")])
+drops = Array[ExtResource("10_p7r07")]([SubResource("Resource_67htc")])
 
 [node name="Chase" type="Node" parent="EnemyStateMachine" unique_id=175970464 node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
 script = ExtResource("14_fuxiv")

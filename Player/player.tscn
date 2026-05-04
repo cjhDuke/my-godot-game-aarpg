@@ -1425,7 +1425,6 @@ wall_min_slide_angle = 0.17453292
 script = ExtResource("1_4ntmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=49456431]
-visible = false
 shape = SubResource("CircleShape2D_edjgo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1564529036]
@@ -1553,7 +1552,6 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D" unique_id=1705511410]
-visible = false
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_dkpta")
 debug_color = Color(0.14238855, 0.53041893, 1.92523e-07, 0.41960785)
@@ -1565,7 +1563,6 @@ monitorable = false
 script = ExtResource("14_lfmf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/PushArea" unique_id=512670364]
-visible = false
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_pisgm")
 debug_color = Color(0.727254, 0.010154434, 0.6781001, 0.41960785)
@@ -1574,7 +1571,6 @@ debug_color = Color(0.727254, 0.010154434, 0.6781001, 0.41960785)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2056290887]
-visible = false
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_gu6f8")
 debug_color = Color(0.7147851, 0.48359603, 0, 0.41960785)
@@ -1589,6 +1585,5 @@ script = ExtResource("17_pisgm")
 position = Vector2(0, -14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet" unique_id=888667758]
-visible = false
 shape = SubResource("CircleShape2D_o28un")
 debug_color = Color(0.8352941, 0.1254902, 0.8862745, 0.23529412)

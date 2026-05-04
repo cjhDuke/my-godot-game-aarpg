@@ -1,6 +1,6 @@
 extends Node2D
 
-const START_LEVEL: String = "res://Levels/Area01/01.tscn"
+const START_LEVEL: String = "res://Levels/Game/start_scene.tscn"
 
 @export var music: AudioStream
 @export var button_focus_audio: AudioStream

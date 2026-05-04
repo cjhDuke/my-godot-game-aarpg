@@ -57,9 +57,11 @@ radius = 15.0
 
 [node name="Boomerang" type="Node2D" unique_id=1269120227]
 script = ExtResource("1_q1tu1")
+max_speed = 500.0
 catch_audio = ExtResource("2_sj23e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1551072754]
+z_index = 4
 position = Vector2(0, -16)
 texture = ExtResource("2_j6qed")
 hframes = 8
