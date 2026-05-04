@@ -29,10 +29,18 @@ func update_inventory(i: int = 0) -> void:
 		new_slot.focus_entered.connect(item_focused)
 		
 	await get_tree().process_frame
-	#get_child(i).grab_focus()
-	if get_child_count() > 0:
-		var target_index = clampi(i, 0, get_child_count() - 1)
-		get_child(target_index).grab_focus()
+	await get_tree().process_frame
+	focus_slot(i)
+
+func focus_slot(i: int = 0) -> void:
+	if not is_visible_in_tree():
+		return
+	if get_child_count() == 0:
+		return
+	var target_index = clampi(i, 0, get_child_count() - 1)
+	var target_slot = get_child(target_index) as Control
+	if target_slot:
+		target_slot.grab_focus.call_deferred()
 
 func item_focused() -> void:
 	for i in get_child_count():
