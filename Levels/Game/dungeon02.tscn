@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://21t22vjvneei" path="res://Enemies/Slime/slime.tscn" id="8_iij47"]
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="9_505po"]
 [ext_resource type="PackedScene" uid="uid://c8wcg7eoiw2p7" path="res://Interactables/dungeon/locked_door.tscn" id="10_nvb1g"]
+[ext_resource type="AudioStream" uid="uid://cllcmcaa5sif8" path="res://Levels/Game/music/dungeon.mp3" id="11_nvb1g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k0kah"]
 texture = ExtResource("2_wr5np")
@@ -261,7 +262,9 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_k0kah")
 
 [node name="Dungeon02" type="Node2D" unique_id=750626338]
+position = Vector2(-9, 28)
 script = ExtResource("1_nvb1g")
+music = ExtResource("11_nvb1g")
 
 [node name="Dugeon02" parent="." unique_id=1074030559 instance=ExtResource("1_qwsya")]
 tile_set = SubResource("TileSet_s7c46")
@@ -269,7 +272,7 @@ layer_0/tile_data = PackedInt32Array(5, 262144, 5, 65541, 262144, 6, 131077, 262
 
 [node name="PlayerSpawn" parent="." unique_id=2075159053 instance=ExtResource("3_6ug3k")]
 z_index = 2
-position = Vector2(219, 186)
+position = Vector2(224, 426)
 
 [node name="ItemDropper" parent="." unique_id=1024554304 instance=ExtResource("5_yapi6")]
 position = Vector2(175, 113)

@@ -6,6 +6,7 @@ var direction : Vector2 = Vector2.ZERO
 var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
+var is_dead : bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -29,6 +30,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if is_dead:
+		direction = Vector2.ZERO
+		return
 	
 	#get player's position
 	#direction.x = Input.get_action_strength("right")-Input.get_action_strength("left")
@@ -79,20 +83,27 @@ func anim_direction() -> String:
 		return "side"
 
 func _take_damage( hurt_box : HurtBox ) -> void:
-	if invulnerable == true:
+	if invulnerable == true or is_dead == true:
 		return
 	update_hp( -hurt_box.damage )
 	if hp > 0:
 		player_damaged.emit( hurt_box )
 	else :
-		player_damaged.emit( hurt_box )
-		update_hp(99)
+		die()
 	pass
 	
 	
 func update_hp( delta : int ) -> void:
 	hp = clampi( hp + delta, 0, max_hp)
 	PlayerHud.update_hp( hp, max_hp )
+	pass
+
+func die() -> void:
+	is_dead = true
+	direction = Vector2.ZERO
+	velocity = Vector2.ZERO
+	hit_box.monitoring = false
+	PlayerManager.respawn_player_after_death()
 	pass
 	
 func make_invulnerable( _duration : float = 1.0 ) -> void:

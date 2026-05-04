@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cjt6bedbo3d2p" path="res://Tile Maps/Sprites/dungeon.png" id="2_08mo0"]
 [ext_resource type="PackedScene" uid="uid://dbhv13lwe7daf" path="res://Levels/player_spawn.tscn" id="3_x66n4"]
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="4_ue8b7"]
+[ext_resource type="AudioStream" uid="uid://cllcmcaa5sif8" path="res://Levels/Game/music/dungeon.mp3" id="5_m06so"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ugyj7"]
 texture = ExtResource("2_08mo0")
@@ -257,6 +258,7 @@ sources/0 = SubResource("TileSetAtlasSource_ugyj7")
 
 [node name="Dungeon" type="Node2D" unique_id=27133149]
 script = ExtResource("1_m06so")
+music = ExtResource("5_m06so")
 
 [node name="Dungeon01" parent="." unique_id=1074030559 instance=ExtResource("1_3k6b5")]
 tile_set = SubResource("TileSet_opdgi")

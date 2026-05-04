@@ -18,7 +18,10 @@ func _ready() -> void:
 		player.volume_db = -40
 		
 func play_music( _audio : AudioStream ) -> void:
-	if _audio == music_players[ current_music_player ].stream:
+	if _audio == null:
+		return
+	_set_music_looping(_audio)
+	if _audio == music_players[ current_music_player ].stream and music_players[ current_music_player ].playing:
 		return
 		
 	current_music_player += 1
@@ -41,6 +44,12 @@ func play_and_fade_in( player : AudioStreamPlayer ) -> void:
 	var tween : Tween = create_tween()
 	tween.tween_property( player, 'volume_db', 0, music_fade_duration )
 	pass
+
+
+func stop_music() -> void:
+	for player in music_players:
+		if player.playing:
+			fade_out_and_stop(player)
 	
 	
 func fade_out_and_stop( player : AudioStreamPlayer ) -> void:
@@ -49,3 +58,10 @@ func fade_out_and_stop( player : AudioStreamPlayer ) -> void:
 	await tween.finished
 	player.stop()
 	pass
+
+
+func _set_music_looping(_audio: AudioStream) -> void:
+	for property in _audio.get_property_list():
+		if property.name == "loop":
+			_audio.set("loop", true)
+			return

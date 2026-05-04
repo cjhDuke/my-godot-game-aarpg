@@ -83,3 +83,11 @@ func use_item( item : ItemData, count : int = 1 ) -> bool:
 				return true
 				
 	return false
+
+func clear() -> void:
+	for s in slots:
+		if s and s.changed.is_connected(slot_changed):
+			s.changed.disconnect(slot_changed)
+	for i in slots.size():
+		slots[i] = null
+	emit_changed()

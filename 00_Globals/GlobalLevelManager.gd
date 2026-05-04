@@ -29,6 +29,14 @@ func change_tilemap_bounds(bounds: Array[Vector2]) -> void:
 	TileMapBoundsChanged.emit(bounds)
 
 
+func reload_current_level() -> void:
+	var current_scene := get_tree().current_scene
+	if current_scene == null or current_scene.scene_file_path.is_empty():
+		return
+	await load_new_level(current_scene.scene_file_path, "", Vector2.ZERO)
+	pass
+
+
 func load_new_level(
 		level_path: String,
 		_target_transition: String,

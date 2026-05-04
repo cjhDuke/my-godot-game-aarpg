@@ -18,7 +18,7 @@ region = Rect2(192, 0, 32, 32)
 [resource]
 script = ExtResource("2_qqs15")
 name = "Apple"
-description = "A delicious red apple"
+description = "A delicious red apple can heal your broken haert."
 texture = SubResource("AtlasTexture_wdqa3")
 effects = Array[ExtResource("1_v8o5f")]([SubResource("Resource_4gvvg")])
 metadata/_custom_type_script = "uid://trf3lqx42dev"

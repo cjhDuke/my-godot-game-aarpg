@@ -4,6 +4,7 @@ class_name DialogueSystemNode extends CanvasLayer
 
 signal finished
 signal letter_added(letter: String)
+signal choice_selected(dialogue_branch: DialogueBranch)
 
 var is_active: bool = false
 var text_in_progress: bool = false
@@ -133,6 +134,7 @@ func set_dialogue_choice(_d: DialogueChoice) -> void:
  
 func _dialogue_choice_selected(_d: DialogueBranch) -> void:
 	choice_options.visible = false
+	choice_selected.emit(_d)
 	show_dialogue(_d.dialogue_items)
 	pass
 
