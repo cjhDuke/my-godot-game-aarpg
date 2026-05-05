@@ -8,6 +8,7 @@ var _is_transitioning: bool = false
 @export_file("*.tscn") var level
 @export var target_transition_area: String = "LevelTransition"
 @export var center_player: bool = false
+@export var completes_current_level: bool = true
 
 @export_category("Collision Area Settings")
 
@@ -60,6 +61,8 @@ func _player_entered(_p: Node2D) -> void:
 
 
 func _start_level_transition(_level: String, _target_transition_area: String, _offset: Vector2) -> void:
+	if completes_current_level:
+		SaveManager.mark_current_scene_completed()
 	LevelManager.load_new_level(_level, _target_transition_area, _offset)
 	
 	

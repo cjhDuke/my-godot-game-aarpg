@@ -20,7 +20,7 @@
 radius = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oij8y"]
-radius = 5.0
+radius = 7.0
 height = 20.0
 
 [sub_resource type="Animation" id="Animation_wwfkb"]
@@ -789,6 +789,7 @@ script = ExtResource("12_843tw")
 drops = Array[ExtResource("13_nsi17")]([SubResource("Resource_67htc")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=715979421]
+volume_db = -10.0
 max_polyphony = 4
 
 [node name="DestroyEffectSprite" type="Sprite2D" parent="." unique_id=50284657]

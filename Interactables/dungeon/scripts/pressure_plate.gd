@@ -22,14 +22,22 @@ func _ready() -> void:
 
 
 func _on_body_entered( b : Node2D ) -> void:
+	if not can_activate( b ):
+		return
 	bodies += 1
 	check_is_activated()
 	pass
 
 func _on_body_exited( b : Node2D ) -> void:
-	bodies -= 1
+	if not can_activate( b ):
+		return
+	bodies = maxi( bodies - 1, 0 )
 	check_is_activated()
 	pass
+
+
+func can_activate( b : Node2D ) -> bool:
+	return b is Player or b is PushableStatue
 
 
 func check_is_activated() -> void:

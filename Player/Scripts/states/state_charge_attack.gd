@@ -11,6 +11,7 @@ var is_attacking : bool = false
 var particles : ParticleProcessMaterial
 
 @onready var idle: State_Idle = $"../Idle"
+@onready var attack: State_Attack = $"../Attack"
 @onready var charge_hurt_box: HurtBox = %ChargeHurtBox
 @onready var charge_spin_hurt_box: HurtBox = %ChargeSpinHurtBox
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
@@ -81,7 +82,7 @@ func physics( _delta : float) -> State:
 func handle_input( _event : InputEvent) -> State:
 	if _event.is_action_released("attack"):
 		if timer > 0:
-			return idle
+			return attack
 		elif is_attacking == false:
 			charge_attack()
 	return null
@@ -97,7 +98,8 @@ func charge_attack() -> void:
 	player.make_invulnerable(_duration)
 	charge_spin_hurt_box.monitoring = true
 	await get_tree().create_timer(_duration * 0.875).timeout
-	state_machine.change_state(idle)
+	if state_machine.current_state == self and player.is_dead == false:
+		state_machine.change_state(idle)
 	pass
 
 func get_spin_frame() -> float:
@@ -117,6 +119,8 @@ func charge_complete() -> void:
 	particles.initial_velocity_min = 50
 	particles.initial_velocity_max = 100
 	await get_tree().create_timer( 0.5 ).timeout
+	if state_machine.current_state != self or player.is_dead:
+		return
 	gpu_particles_2d.amount = 10
 	gpu_particles_2d.explosiveness = 0
 	particles.initial_velocity_min = 10

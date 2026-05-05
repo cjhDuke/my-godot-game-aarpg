@@ -54,3 +54,8 @@ func change_state( new_state : State) ->void:
 	prev_state = current_state
 	current_state = new_state
 	current_state.enter()
+
+func reset_to_initial_state() -> void:
+	if states.size() == 0:
+		return
+	change_state( states[0] )

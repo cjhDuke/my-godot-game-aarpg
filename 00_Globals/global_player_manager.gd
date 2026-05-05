@@ -51,6 +51,7 @@ func _reset_player_for_respawn() -> void:
 	player.invulnerable = false
 	player.is_dead = false
 	player.hit_box.monitoring = true
+	player.state_machine.reset_to_initial_state()
 	player.update_hp( 0 )
 	player.update_animation("idle")
 	pass

@@ -764,6 +764,7 @@ attack_area = NodePath("../../Sprite2D/AttackHurtBox")
 next_state = NodePath("../idle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=715979421]
+volume_db = -10.0
 max_polyphony = 4
 
 [node name="DestroyEffectSprite" type="Sprite2D" parent="." unique_id=50284657]

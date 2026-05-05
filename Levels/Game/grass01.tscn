@@ -77,6 +77,7 @@ position = Vector2(240, 60)
 position = Vector2(240, -16)
 level = "uid://det3rrsbk1u0t"
 target_transition_area = "LevelTransition2"
+completes_current_level = false
 side = 2
 
 [node name="Congratulations" type="CanvasLayer" parent="." unique_id=943584561]

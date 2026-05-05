@@ -12,6 +12,7 @@ var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player : Player
 var invulnerable : bool = false
+var _is_defeated : bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -22,6 +23,8 @@ var invulnerable : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if _load_state():
+		return
 	state_machine.initialize( self )
 	player = PlayerManager.player 
 	hit_box.Damaged.connect( _take_damage )
@@ -34,7 +37,10 @@ func _process(_delta):
 	
 
 func _physics_process(_delta):
+	if _is_defeated:
+		return
 	move_and_slide()
+	_save_state()
 
 
 func set_direction( _new_direction : Vector2 ) -> bool:
@@ -77,3 +83,34 @@ func _take_damage( hurt_box : HurtBox ) ->void:
 		enemy_damaged.emit( hurt_box )
 	else:
 		enemy_destroyed.emit( hurt_box )
+
+
+func mark_defeated() -> void:
+	_is_defeated = true
+	_save_state()
+
+
+func _load_state() -> bool:
+	var state := SaveManager.get_scene_node_state(self)
+	if state.is_empty():
+		return false
+	if bool(state.get("defeated", false)):
+		_is_defeated = true
+		queue_free()
+		return true
+	hp = int(state.get("hp", hp))
+	if state.has("pos_x") and state.has("pos_y"):
+		global_position = Vector2(float(state.pos_x), float(state.pos_y))
+	return false
+
+
+func _save_state() -> void:
+	if _is_defeated:
+		SaveManager.set_scene_node_state(self, { defeated = true })
+		return
+	SaveManager.set_scene_node_state(self, {
+		defeated = false,
+		hp = hp,
+		pos_x = global_position.x,
+		pos_y = global_position.y
+	})

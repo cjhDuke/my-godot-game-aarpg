@@ -78,6 +78,7 @@ rotation = 9.424778
 position = Vector2(224, 176)
 level = "uid://co3if4ab2df3"
 target_transition_area = "LevelTransition2"
+completes_current_level = false
 side = 3
 
 [node name="LevelTransition2" parent="." unique_id=1559807927 instance=ExtResource("11_18grd")]

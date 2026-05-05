@@ -276,4 +276,5 @@ side = 2
 [node name="LevelTransition2" parent="." unique_id=1413807034 instance=ExtResource("4_ue8b7")]
 position = Vector2(224, 288)
 level = "uid://dyusdp8jqvtsf"
+completes_current_level = false
 side = 3

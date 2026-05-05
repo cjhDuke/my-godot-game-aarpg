@@ -10,6 +10,8 @@ const PICKUP = preload("res://Item/item_pickup/item_pickup.tscn")
 
 @export_category("Item Drops")
 @export var drops : Array[ DropData ]
+@export var drop_min_speed : float = 80.0
+@export var drop_max_speed : float = 180.0
 
 var _damage_position : Vector2
 var _direction : Vector2
@@ -21,6 +23,7 @@ func init() ->void:
 ## What happens when the player enters this State
 func enter() -> void:
 	enemy.invulnerable = true
+	enemy.mark_defeated()
 	
 	_direction = enemy.global_position.direction_to( _damage_position )
 	
@@ -72,4 +75,8 @@ func drop_items() -> void:
 			drop.item_data = drops[i].item
 			enemy.get_parent().call_deferred( "add_child", drop )
 			drop.global_position = enemy.global_position 
-			drop.velocity = enemy.velocity.rotated( randf_range( -1.5, 1.5 ) ) * randf_range( 0.9, 1.5 )
+			drop.set_spawn_position(enemy.global_position)
+			var drop_direction := enemy.velocity.rotated( randf_range( -1.5, 1.5 ) ).normalized()
+			if drop_direction == Vector2.ZERO:
+				drop_direction = Vector2.RIGHT.rotated( randf_range( 0.0, TAU ) )
+			drop.velocity = drop_direction * randf_range( drop_min_speed, drop_max_speed )

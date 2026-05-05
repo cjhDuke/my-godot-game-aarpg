@@ -4,8 +4,14 @@ class_name ItemPickup extends CharacterBody2D
 signal picked_up
 
 @export var item_data: ItemData: set = _set_item_data
+@export var bounce_damping: float = 0.55
+@export var friction: float = 5.0
+@export var max_bounces_per_frame: int = 3
+@export var collision_safe_margin: float = 4.0
+@export var max_scatter_distance: float = 32.0
 
 var _picked_up: bool = false
+var _spawn_position: Vector2 = Vector2.INF
 
 @onready var area_2d: Area2D = $Area2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -13,16 +19,29 @@ var _picked_up: bool = false
 
 
 func _ready() -> void:
+	if _spawn_position == Vector2.INF:
+		_spawn_position = global_position
 	_update_texture()
 	if Engine.is_editor_hint():
 		return
 	area_2d.body_entered.connect(_on_body_entered)
 	
 func _physics_process(delta: float) -> void:
-	var collision_info = move_and_collide(velocity * delta)
-	if collision_info:
-		velocity = velocity.bounce(collision_info.get_normal())
-	velocity -= velocity * delta * 4
+	var motion := velocity * delta
+	for i in max_bounces_per_frame:
+		var collision_info := move_and_collide(motion, false, collision_safe_margin, true)
+		if collision_info == null:
+			break
+		var normal := collision_info.get_normal()
+		global_position += normal
+		velocity = velocity.bounce(normal) * bounce_damping
+		motion = collision_info.get_remainder().bounce(normal) * bounce_damping
+		if motion.length() < 0.1:
+			break
+	_keep_near_spawn()
+	velocity = velocity.move_toward(Vector2.ZERO, friction * velocity.length() * delta)
+	if velocity.length() < 2.0:
+		velocity = Vector2.ZERO
 
 func _on_body_entered(b) -> void:
 	if _picked_up == true:
@@ -60,3 +79,18 @@ func _update_texture() -> void:
 	if item_data and sprite_2d:
 		sprite_2d.texture = item_data.texture
 	pass
+
+
+func _keep_near_spawn() -> void:
+	if max_scatter_distance <= 0:
+		return
+	var offset := global_position - _spawn_position
+	if offset.length() <= max_scatter_distance:
+		return
+	var normal := offset.normalized()
+	global_position = _spawn_position + normal * max_scatter_distance
+	velocity = velocity.bounce(-normal) * bounce_damping
+
+
+func set_spawn_position(value: Vector2) -> void:
+	_spawn_position = value

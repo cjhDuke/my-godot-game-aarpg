@@ -27,13 +27,14 @@ func enter() -> void:
 	
 	attacking = true
 	await get_tree().create_timer( 0.075 ).timeout
-	if attacking:
+	if attacking and state_machine.current_state == self and player.is_dead == false:
 		hurt_box.monitoring = true
 	pass
 
 ## What happens when the player exits this State
 func exit() -> void:
-	animation_player.animation_finished.disconnect( end_attack )
+	if animation_player.animation_finished.is_connected( end_attack ):
+		animation_player.animation_finished.disconnect( end_attack )
 	attacking = false
 	hurt_box.monitoring = false
 	pass
@@ -59,6 +60,9 @@ func handle_input( _event : InputEvent) -> State:
 	return null
 	
 func end_attack( _newAnimName : String ) -> void:
+	if player.is_dead:
+		attacking = false
+		return
 	if Input.is_action_pressed("attack"):
 		state_machine.change_state(charge_attack)
 	attacking = false

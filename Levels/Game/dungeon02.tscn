@@ -281,23 +281,29 @@ item_data = ExtResource("6_yapi6")
 [node name="EnemyCounter" parent="." unique_id=1753357892 instance=ExtResource("7_gn6cq")]
 
 [node name="Slime" parent="EnemyCounter" unique_id=350501684 instance=ExtResource("8_iij47")]
+z_index = 1
 position = Vector2(361, 164)
 
 [node name="Slime2" parent="EnemyCounter" unique_id=1384550423 instance=ExtResource("8_iij47")]
+z_index = 1
 position = Vector2(289, 144)
 
 [node name="Slime3" parent="EnemyCounter" unique_id=167269729 instance=ExtResource("8_iij47")]
+z_index = 1
 position = Vector2(103, 152)
 
 [node name="Slime4" parent="EnemyCounter" unique_id=1569376091 instance=ExtResource("8_iij47")]
+z_index = 1
 position = Vector2(112, 238)
 
 [node name="Slime5" parent="EnemyCounter" unique_id=1969368277 instance=ExtResource("8_iij47")]
+z_index = 1
 position = Vector2(362, 255)
 
 [node name="LevelTransition" parent="." unique_id=1794371587 instance=ExtResource("9_505po")]
 position = Vector2(224, 464)
 level = "uid://si60he8q3byq"
+completes_current_level = false
 side = 3
 
 [node name="LevelTransition2" parent="." unique_id=1775408811 instance=ExtResource("9_505po")]

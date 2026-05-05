@@ -102,6 +102,7 @@ func die() -> void:
 	is_dead = true
 	direction = Vector2.ZERO
 	velocity = Vector2.ZERO
+	state_machine.reset_to_initial_state()
 	hit_box.monitoring = false
 	PlayerManager.respawn_player_after_death()
 	pass

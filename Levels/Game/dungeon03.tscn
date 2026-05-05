@@ -28,21 +28,24 @@ position = Vector2(224, -9)
 [node name="PushableStatue" parent="." unique_id=987541879 instance=ExtResource("4_7a6c5")]
 z_index = 1
 position = Vector2(1070, 134)
-push_speed = 100.0
+push_speed = 50.0
 
 [node name="Goblin" parent="." unique_id=350501684 instance=ExtResource("5_s2t2n")]
+z_index = 1
 position = Vector2(744, 163)
 
 [node name="EnemyBehaviourWander" parent="Goblin" unique_id=1908337199 instance=ExtResource("6_uecej")]
 wander_range = 4
 
 [node name="Goblin2" parent="." unique_id=777377598 instance=ExtResource("5_s2t2n")]
+z_index = 1
 position = Vector2(743, 75)
 
 [node name="EnemyBehaviourWander" parent="Goblin2" unique_id=1322540015 instance=ExtResource("6_uecej")]
 wander_range = 4
 
 [node name="Goblin3" parent="." unique_id=1888810845 instance=ExtResource("5_s2t2n")]
+z_index = 1
 position = Vector2(1108, 132)
 
 [node name="EnemyBehaviourWander" parent="Goblin3" unique_id=1871163623 instance=ExtResource("6_uecej")]
@@ -51,6 +54,7 @@ position = Vector2(1108, 132)
 position = Vector2(256, 304)
 level = "uid://byicah4sckh5a"
 target_transition_area = "LevelTransition2"
+completes_current_level = false
 side = 3
 
 [node name="LevelTransition2" parent="." unique_id=737864398 instance=ExtResource("6_yb1ff")]
@@ -59,6 +63,7 @@ level = "uid://det3rrsbk1u0t"
 side = 2
 
 [node name="PlayerSpawn" parent="." unique_id=2075159053 instance=ExtResource("7_g3l6p")]
+z_index = 1
 position = Vector2(261, 288)
 
 [connection signal="activated" from="PressurePlate" to="BarredDoor" method="open_door"]

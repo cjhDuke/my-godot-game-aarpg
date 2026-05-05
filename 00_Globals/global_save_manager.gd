@@ -16,6 +16,8 @@ var current_save: Dictionary = {
 	},
 	items = [],
 	persistence = [],
+	completed_scenes = [],
+	scene_node_states = {},
 	quests = [],
 }
 
@@ -46,6 +48,7 @@ func load_game() -> void:
 	json.parse(file.get_line())
 	var save_dict: Dictionary = json.get_data() as Dictionary
 	current_save = save_dict
+	_validate_save_data()
 	
 	LevelManager.load_new_level(current_save.scene_path, "", Vector2.ZERO)
 	
@@ -89,3 +92,80 @@ func add_persistent_value( value : String ) -> void:
 func check_persistent_value( value : String ) -> bool:
 	var p = current_save.persistence as Array
 	return p.has( value )
+
+
+func set_scene_node_state(node: Node, state: Dictionary) -> void:
+	var key := get_scene_node_key(node)
+	if key.is_empty():
+		return
+	_validate_save_data()
+	current_save.scene_node_states[key] = state
+
+
+func get_scene_node_state(node: Node) -> Dictionary:
+	var key := get_scene_node_key(node)
+	if key.is_empty():
+		return {}
+	_validate_save_data()
+	var scene_path := get_scene_path_for_node(node)
+	if scene_path.is_empty() or not is_scene_completed(scene_path):
+		return {}
+	var states := current_save.scene_node_states as Dictionary
+	return states.get(key, {}) as Dictionary
+
+
+func set_scene_node_state_value(node: Node, state_key: String, value: Variant) -> void:
+	var state := get_scene_node_state(node)
+	state[state_key] = value
+	set_scene_node_state(node, state)
+
+
+func get_scene_node_state_value(node: Node, state_key: String, default_value: Variant = null) -> Variant:
+	var state := get_scene_node_state(node)
+	return state.get(state_key, default_value)
+
+
+func get_scene_node_key(node: Node) -> String:
+	var scene_path := get_scene_path_for_node(node)
+	if scene_path.is_empty():
+		return ""
+	var scene := get_tree().current_scene
+	return scene_path + "/" + str(scene.get_path_to(node))
+
+
+func get_scene_path_for_node(node: Node) -> String:
+	var scene := get_tree().current_scene
+	if scene == null or scene.scene_file_path.is_empty() or node == null or not scene.is_ancestor_of(node):
+		return ""
+	return scene.scene_file_path
+
+
+func mark_current_scene_completed() -> void:
+	var scene := get_tree().current_scene
+	if scene == null or scene.scene_file_path.is_empty():
+		return
+	mark_scene_completed(scene.scene_file_path)
+
+
+func mark_scene_completed(scene_path: String) -> void:
+	if scene_path.is_empty():
+		return
+	_validate_save_data()
+	if not current_save.completed_scenes.has(scene_path):
+		current_save.completed_scenes.append(scene_path)
+
+
+func is_scene_completed(scene_path: String) -> bool:
+	if scene_path.is_empty():
+		return false
+	_validate_save_data()
+	return current_save.completed_scenes.has(scene_path)
+
+
+func _validate_save_data() -> void:
+	if not current_save.has("persistence"):
+		current_save.persistence = []
+	if not current_save.has("completed_scenes"):
+		current_save.completed_scenes = []
+	if not current_save.has("scene_node_states"):
+		current_save.scene_node_states = {}
