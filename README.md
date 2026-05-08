@@ -1,6 +1,10 @@
-# First Release
+# My AARPG Godot Game
 
-First playable version of the game.
+## About this game
+This is the first game I’ve ever made as a beginner indie developer.
+It’s a small pixel-style ARPG created with Godot, featuring combat, enemies, items, NPC interactions, and a simple adventure world to explore.
+The game is still a work in progress, and there may be bugs or rough edges, but it was made with a lot of passion and learning along the way.
+Thanks for trying it out!
 
 ## Features
 
