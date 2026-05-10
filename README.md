@@ -1,4 +1,4 @@
-# 基于 Godot 的 2D 像素 AARPG 原型
+# 基于 Godot 的 2D 像素 ARPG 原型
 
 ## 项目简介
 
