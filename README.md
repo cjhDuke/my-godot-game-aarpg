@@ -10,16 +10,19 @@
 
 ## 操作说明
 
-- 移动 W/A/S/D
-- 攻击 J
-- 交互 K
-- 技能 L
-- 与NPC对话 P
+| 操作        | 按键          |
+| ----------- | ------------- |
+| 移动        | W / A / S / D |
+| 攻击        | J             |
+| 交互        | K             |
+| 技能        | L             |
+| 与 NPC 对话 | P             |
 
 ## 运行方式
 
-- 下载并解压release版本
-- 运行exe文件
+1. 打开本仓库的 Release 页面。
+2. 下载最新版本压缩包。
+3. 解压后运行 `.exe` 文件。
 
 ## 项目展示
 
@@ -29,6 +32,10 @@
 
 ### 游戏截图
 
-![主界面](./images/title.png)
-![战斗场景](./images/combat.png)
-![背包界面](./images/inventory.png)
+![主界面](images/title.jpg)
+![战斗场景](images/combat.jpg)
+![背包界面](images/inventory.jpg)
+
+## License
+
+本项目为个人学习实践项目，仅用于学习和交流。
