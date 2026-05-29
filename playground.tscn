@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dgwbjiph282" path="res://Enemies/Goblin/goblin.tscn" id="6_ynsuh"]
 [ext_resource type="PackedScene" uid="uid://bfp15p1r6typq" path="res://Item/item_pickup/item_pickup.tscn" id="7_v7dth"]
 [ext_resource type="Resource" uid="uid://cdxl2akpqptbo" path="res://Item/gem.tres" id="8_v7dth"]
+[ext_resource type="PackedScene" path="res://Enemies/MageEnemy/mage_enemy.tscn" id="9_mage"]
 
 [node name="Playground" type="Node2D" unique_id=1661519622]
 y_sort_enabled = true
@@ -42,6 +43,9 @@ position = Vector2(242, 123)
 
 [node name="Goblin" parent="." unique_id=1254387049 instance=ExtResource("6_ynsuh")]
 position = Vector2(434, 198)
+
+[node name="MageEnemy" parent="." instance=ExtResource("9_mage")]
+position = Vector2(337, 86)
 
 [node name="ItemPickup" parent="." unique_id=1940809590 instance=ExtResource("7_v7dth")]
 position = Vector2(382, 196)

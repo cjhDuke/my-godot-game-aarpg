@@ -729,7 +729,7 @@ _data = {
 }
 
 [node name="Slime" type="CharacterBody2D" unique_id=350501684]
-collision_layer = 256
+collision_layer = 257
 collision_mask = 16
 script = ExtResource("1_t8cwk")
 
