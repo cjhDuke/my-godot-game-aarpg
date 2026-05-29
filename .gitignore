@@ -5,3 +5,8 @@ export_presets.cfg
 build/
 bin/
 *.tmp
+.claude/
+.codex/
+
+# Ignore Godot import metadata files
+*.import
