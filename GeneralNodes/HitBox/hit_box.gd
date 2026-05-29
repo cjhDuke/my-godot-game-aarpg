@@ -1,9 +1,10 @@
 class_name HitBox extends Area2D
 
-signal Damaged(hurt_box: HurtBox)
+@export var damage : int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	area_entered.connect( _on_area_entered )
 	pass # Replace with function body.
 
 
@@ -11,6 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func take_damage(hurt_box: HurtBox) -> void:
-	#print( "take_damage: " , damage )
-	Damaged.emit(hurt_box)
+func _on_area_entered ( a : Area2D ) -> void:
+	if a is HurtBox:
+		a.take_damage( self )
+	pass

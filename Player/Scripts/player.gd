@@ -11,19 +11,19 @@ var is_dead : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
-@onready var hit_box: HitBox = $HitBox
+@onready var hurt_box: HurtBox = $HurtBox
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 @onready var audio: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
 
 
 signal DirectionChanged( new_direction : Vector2 )
-signal player_damaged( hurt_box : HurtBox )
+signal player_damaged( hit_box : HitBox )
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerManager.player = self
 	state_machine.initialize(self)
-	hit_box.Damaged.connect( _take_damage )
+	hurt_box.Damaged.connect( _take_damage )
 	update_hp(99)
 	pass # Replace with function body.
 
@@ -82,12 +82,12 @@ func anim_direction() -> String:
 	else:
 		return "side"
 
-func _take_damage( hurt_box : HurtBox ) -> void:
+func _take_damage( hit_box : HitBox ) -> void:
 	if invulnerable == true or is_dead == true:
 		return
-	update_hp( -hurt_box.damage )
+	update_hp( -hit_box.damage )
 	if hp > 0:
-		player_damaged.emit( hurt_box )
+		player_damaged.emit( hit_box )
 	else :
 		die()
 	pass
@@ -103,16 +103,16 @@ func die() -> void:
 	direction = Vector2.ZERO
 	velocity = Vector2.ZERO
 	state_machine.reset_to_initial_state()
-	hit_box.monitoring = false
+	hurt_box.monitoring = false
 	PlayerManager.respawn_player_after_death()
 	pass
 	
 func make_invulnerable( _duration : float = 1.0 ) -> void:
 	invulnerable = true
-	hit_box.monitoring = false
-	
+	hurt_box.monitoring = false
+
 	await get_tree().create_timer( _duration ).timeout
-	
+
 	invulnerable = false
-	hit_box.monitoring = true
+	hurt_box.monitoring = true
 	pass 

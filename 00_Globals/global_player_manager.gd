@@ -35,7 +35,7 @@ func respawn_player_after_death() -> void:
 	player.velocity = Vector2.ZERO
 	player.direction = Vector2.ZERO
 	player.invulnerable = true
-	player.hit_box.monitoring = false
+	player.hurt_box.monitoring = false
 	player.update_hp( 0 )
 	await LevelManager.reload_current_level()
 	_reset_player_for_respawn()
@@ -50,7 +50,7 @@ func _reset_player_for_respawn() -> void:
 	player.cardinal_direction = Vector2.DOWN
 	player.invulnerable = false
 	player.is_dead = false
-	player.hit_box.monitoring = true
+	player.hurt_box.monitoring = true
 	player.state_machine.reset_to_initial_state()
 	player.update_hp( 0 )
 	player.update_animation("idle")

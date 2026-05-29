@@ -12,12 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://boodt28ef8y4f" path="res://Props/Sprites/Props.png" id="7_gpjlu"]
 [ext_resource type="AudioStream" uid="uid://ch08vlqyq446d" path="res://Player/Audio/SwordSwoosh.wav" id="8_od3ui"]
 [ext_resource type="Script" uid="uid://d1l7ifrd8a7s2" path="res://Player/Scripts/PlayerInteractionHost.gd" id="10_apopc"]
-[ext_resource type="PackedScene" uid="uid://chqll71vii5yb" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="10_x3vf3"]
+[ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/HitBox/hit_box.tscn" id="10_x3vf3"]
 [ext_resource type="Script" uid="uid://dtncjtjw182pm" path="res://Player/Scripts/PlayerCamera.gd" id="11_5htga"]
 [ext_resource type="Script" uid="uid://de4usd451g144" path="res://Player/Scripts/states/state_stun.gd" id="11_dkpta"]
 [ext_resource type="Script" uid="uid://c1pmiivfpb4hs" path="res://Player/Scripts/states/state_charge_attack.gd" id="12_o28un"]
 [ext_resource type="AudioStream" uid="uid://bd2ssv0byk87l" path="res://Player/Audio/charged.wav" id="13_7emwf"]
-[ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/HitBox/hit_box.tscn" id="13_p5o4e"]
+[ext_resource type="PackedScene" uid="uid://chqll71vii5yb" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="13_p5o4e"]
 [ext_resource type="AudioStream" uid="uid://ycss18xxpr17" path="res://Player/Audio/hit_player.wav" id="14_gu6f8"]
 [ext_resource type="AudioStream" uid="uid://bnlaf8n8nblyo" path="res://Player/Audio/spin-attack.wav" id="14_hshwv"]
 [ext_resource type="Script" uid="uid://pocmmd1m5ww7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
@@ -364,7 +364,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AttackHurtBox:position")
+tracks/1/path = NodePath("Sprite2D/AttackHitBox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -376,7 +376,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/ChargeHurtBox:rotation")
+tracks/2/path = NodePath("Sprite2D/ChargeHitBox:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -388,7 +388,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/ChargeHurtBox/GPUParticles2D:position")
+tracks/3/path = NodePath("Sprite2D/ChargeHitBox/GPUParticles2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -440,7 +440,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AttackHurtBox:position")
+tracks/1/path = NodePath("Sprite2D/AttackHitBox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -468,7 +468,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AttackHurtBox:position")
+tracks/1/path = NodePath("Sprite2D/AttackHitBox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -496,7 +496,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AttackHurtBox:position")
+tracks/1/path = NodePath("Sprite2D/AttackHitBox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -775,7 +775,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/ChargeHurtBox:rotation")
+tracks/1/path = NodePath("Sprite2D/ChargeHitBox:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -804,7 +804,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/ChargeHurtBox:rotation")
+tracks/1/path = NodePath("Sprite2D/ChargeHitBox:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -816,7 +816,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/ChargeHurtBox/GPUParticles2D:position")
+tracks/2/path = NodePath("Sprite2D/ChargeHitBox/GPUParticles2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -845,7 +845,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/ChargeHurtBox:rotation")
+tracks/1/path = NodePath("Sprite2D/ChargeHitBox:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -857,7 +857,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/ChargeHurtBox/GPUParticles2D:position")
+tracks/2/path = NodePath("Sprite2D/ChargeHitBox/GPUParticles2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -886,7 +886,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/ChargeHurtBox:rotation")
+tracks/1/path = NodePath("Sprite2D/ChargeHitBox:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -898,7 +898,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/ChargeHurtBox/GPUParticles2D:position")
+tracks/2/path = NodePath("Sprite2D/ChargeHitBox/GPUParticles2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -928,7 +928,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/ChargeHurtBox:rotation")
+tracks/1/path = NodePath("Sprite2D/ChargeHitBox:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -940,7 +940,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/ChargeHurtBox/GPUParticles2D:position")
+tracks/2/path = NodePath("Sprite2D/ChargeHitBox/GPUParticles2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -970,7 +970,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/ChargeHurtBox:rotation")
+tracks/1/path = NodePath("Sprite2D/ChargeHitBox:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -982,7 +982,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/ChargeHurtBox/GPUParticles2D:position")
+tracks/2/path = NodePath("Sprite2D/ChargeHitBox/GPUParticles2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1012,7 +1012,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/ChargeHurtBox:rotation")
+tracks/1/path = NodePath("Sprite2D/ChargeHitBox:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1024,7 +1024,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/ChargeHurtBox/GPUParticles2D:position")
+tracks/2/path = NodePath("Sprite2D/ChargeHitBox/GPUParticles2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1448,44 +1448,44 @@ show_behind_parent = true
 position = Vector2(0, 20)
 texture = ExtResource("4_00tjw")
 
-[node name="AttackHurtBox" parent="Sprite2D" unique_id=1852879719 instance=ExtResource("10_x3vf3")]
+[node name="AttackHitBox" parent="Sprite2D" unique_id=1852879719 instance=ExtResource("10_x3vf3")]
 unique_name_in_owner = true
 position = Vector2(0, 37)
 collision_mask = 256
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox" unique_id=1867260663]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHitBox" unique_id=1867260663]
 visible = false
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_apopc")
 debug_color = Color(0.9498908, 0.20795932, 0.23188657, 0.41960785)
 
-[node name="ChargeHurtBox" parent="Sprite2D" unique_id=2814545 instance=ExtResource("10_x3vf3")]
+[node name="ChargeHitBox" parent="Sprite2D" unique_id=2814545 instance=ExtResource("10_x3vf3")]
 unique_name_in_owner = true
 collision_mask = 256
 monitoring = false
 damage = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ChargeHurtBox" unique_id=1792284035]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ChargeHitBox" unique_id=1792284035]
 visible = false
 position = Vector2(0, 15)
 shape = SubResource("CapsuleShape2D_o28un")
 debug_color = Color(0.9498908, 0.20795932, 0.23188657, 0.41960785)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D/ChargeHurtBox" unique_id=54846267]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D/ChargeHitBox" unique_id=54846267]
 position = Vector2(-6, 17)
 amount = 4
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_8mwp6")
 
-[node name="ChargeSpinHurtBox" parent="Sprite2D" unique_id=884829472 instance=ExtResource("10_x3vf3")]
+[node name="ChargeSpinHitBox" parent="Sprite2D" unique_id=884829472 instance=ExtResource("10_x3vf3")]
 unique_name_in_owner = true
 rotation = 6.2831855
 collision_mask = 256
 monitoring = false
 damage = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ChargeSpinHurtBox" unique_id=230160423]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ChargeSpinHitBox" unique_id=230160423]
 visible = false
 position = Vector2(0, 15)
 shape = SubResource("CircleShape2D_n471f")
@@ -1567,10 +1567,10 @@ position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_pisgm")
 debug_color = Color(0.727254, 0.010154434, 0.6781001, 0.41960785)
 
-[node name="HitBox" parent="." unique_id=26665899 instance=ExtResource("13_p5o4e")]
+[node name="HurtBox" parent="." unique_id=26665899 instance=ExtResource("13_p5o4e")]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2056290887]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2056290887]
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_gu6f8")
 debug_color = Color(0.7147851, 0.48359603, 0, 0.41960785)

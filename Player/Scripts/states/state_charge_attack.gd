@@ -12,12 +12,12 @@ var particles : ParticleProcessMaterial
 
 @onready var idle: State_Idle = $"../Idle"
 @onready var attack: State_Attack = $"../Attack"
-@onready var charge_hurt_box: HurtBox = %ChargeHurtBox
-@onready var charge_spin_hurt_box: HurtBox = %ChargeSpinHurtBox
+@onready var charge_hit_box: HitBox = %ChargeHitBox
+@onready var charge_spin_hit_box: HitBox = %ChargeSpinHitBox
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
 @onready var spin_effect_sprite_2d: Sprite2D = $"../../Sprite2D/SpinEffectSprite2D"
 @onready var spin_animation_player: AnimationPlayer = $"../../Sprite2D/SpinEffectSprite2D/AnimationPlayer"
-@onready var gpu_particles_2d: GPUParticles2D = $"../../Sprite2D/ChargeHurtBox/GPUParticles2D"
+@onready var gpu_particles_2d: GPUParticles2D = $"../../Sprite2D/ChargeHitBox/GPUParticles2D"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,7 +29,7 @@ func enter() -> void:
 	timer = charge_duration
 	is_attacking = false
 	walking = false
-	charge_hurt_box.monitoring = true
+	charge_hit_box.monitoring = true
 	gpu_particles_2d.emitting = true
 	gpu_particles_2d.amount = 4
 	gpu_particles_2d.explosiveness = 0
@@ -40,8 +40,8 @@ func enter() -> void:
 
 ## What happens when the player exits this State
 func exit() -> void:
-	charge_hurt_box.monitoring = false
-	charge_spin_hurt_box.monitoring = false
+	charge_hit_box.monitoring = false
+	charge_spin_hit_box.monitoring = false
 	spin_effect_sprite_2d.visible = false
 	gpu_particles_2d.emitting = false
 	pass
@@ -96,7 +96,7 @@ func charge_attack() -> void:
 	spin_animation_player.play("spin")
 	var _duration : float = player.animation_player.current_animation_length
 	player.make_invulnerable(_duration)
-	charge_spin_hurt_box.monitoring = true
+	charge_spin_hit_box.monitoring = true
 	await get_tree().create_timer(_duration * 0.875).timeout
 	if state_machine.current_state == self and player.is_dead == false:
 		state_machine.change_state(idle)

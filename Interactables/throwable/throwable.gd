@@ -8,14 +8,14 @@ class_name Throwable extends Area2D
 var picked_up : bool = false
 var throwable : Node2D 
 
-@onready var hurt_box: HurtBox = $HurtBox
+@onready var hit_box: HitBox = $HitBox
 
 
 func _ready() -> void:
 	area_entered.connect( _on_area_enter )
 	area_exited.connect( _on_area_exit )
 	throwable = get_parent()
-	setup_hurt_box()
+	setup_hit_box()
 	
 	
 func player_interact() -> void:
@@ -35,10 +35,10 @@ func _on_area_exit( _a : Area2D ) -> void:
 	pass
 	
 	
-func setup_hurt_box() -> void:
-	hurt_box.monitoring = false
+func setup_hit_box() -> void:
+	hit_box.monitoring = false
 	for c in get_children():
 		if c is CollisionShape2D:
 			var _col : CollisionShape2D = c.duplicate()
-			hurt_box.add_child( _col )
+			hit_box.add_child( _col )
 			_col.debug_color = Color(1,0,0,0.5)

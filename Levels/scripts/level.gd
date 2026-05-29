@@ -105,6 +105,6 @@ func _reset_player_for_restart() -> void:
 	PlayerManager.player.direction = Vector2.ZERO
 	PlayerManager.player.cardinal_direction = Vector2.DOWN
 	PlayerManager.player.invulnerable = false
-	PlayerManager.player.hit_box.monitoring = true
+	PlayerManager.player.hurt_box.monitoring = true
 	PlayerManager.player.update_hp(0)
 	PlayerManager.player.update_animation("idle")

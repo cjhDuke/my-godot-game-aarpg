@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://2pxtxt1biyjl" path="res://Player/Scripts/abilities/boomerang.gd" id="1_q1tu1"]
 [ext_resource type="Texture2D" uid="uid://cxnk0skf7sv00" path="res://Player/Sprites/boomerang.png" id="2_j6qed"]
 [ext_resource type="AudioStream" uid="uid://c7ibkumu6fjk4" path="res://Player/Audio/catch.wav" id="2_sj23e"]
-[ext_resource type="PackedScene" uid="uid://chqll71vii5yb" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="3_j6qed"]
+[ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/HitBox/hit_box.tscn" id="3_j6qed"]
 [ext_resource type="AudioStream" uid="uid://odkwxxxkcb4x" path="res://Player/Audio/boomerang.wav" id="4_5u3cr"]
 [ext_resource type="PackedScene" uid="uid://k11ta605lnsq" path="res://GeneralNodes/ItemMagnet/item_magnet.tscn" id="6_liud0"]
 
@@ -77,10 +77,10 @@ shape = SubResource("CircleShape2D_5u3cr")
 libraries/ = SubResource("AnimationLibrary_0gvjm")
 autoplay = &"boomerang"
 
-[node name="HurtBox" parent="." unique_id=1852879719 instance=ExtResource("3_j6qed")]
+[node name="HitBox" parent="." unique_id=1852879719 instance=ExtResource("3_j6qed")]
 collision_mask = 256
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox" unique_id=263376778]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" unique_id=263376778]
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_sj23e")
 debug_color = Color(0.90164346, 0.10766346, 0.36556005, 0.41960785)

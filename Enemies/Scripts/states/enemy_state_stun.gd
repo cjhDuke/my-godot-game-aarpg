@@ -45,8 +45,8 @@ func process(_delta : float) -> EnemyState:
 func physics( _delta : float) -> EnemyState:
 	return null
 
-func _on_enemy_damaged( hurt_box : HurtBox ) -> void:
-	_damage_position = hurt_box.global_position
+func _on_enemy_damaged( hit_box : HitBox ) -> void:
+	_damage_position = hit_box.global_position
 	state_machine.change_state( self )
 	
 

@@ -8,7 +8,7 @@ var attacking : bool = false
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 @onready var attack_anim: AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AnimationPlayer"
 @onready var audio : AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
-@onready var hurt_box: HurtBox = %AttackHurtBox
+@onready var hit_box: HitBox = %AttackHitBox
 
 @onready var idle: State_Idle = $"../Idle"
 @onready var walk: State_Walk = $"../Walk"
@@ -28,7 +28,7 @@ func enter() -> void:
 	attacking = true
 	await get_tree().create_timer( 0.075 ).timeout
 	if attacking and state_machine.current_state == self and player.is_dead == false:
-		hurt_box.monitoring = true
+		hit_box.monitoring = true
 	pass
 
 ## What happens when the player exits this State
@@ -36,7 +36,7 @@ func exit() -> void:
 	if animation_player.animation_finished.is_connected( end_attack ):
 		animation_player.animation_finished.disconnect( end_attack )
 	attacking = false
-	hurt_box.monitoring = false
+	hit_box.monitoring = false
 	pass
 	
 ## What heppens during the process update in the State

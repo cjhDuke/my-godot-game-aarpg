@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://dgwbjiph282"]
 
 [ext_resource type="Script" uid="uid://d3hrwgkdyaam2" path="res://Enemies/Scripts/enemy.gd" id="1_e6gxc"]
-[ext_resource type="PackedScene" uid="uid://chqll71vii5yb" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_egddf"]
-[ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/HitBox/hit_box.tscn" id="3_3xcr1"]
+[ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/HitBox/hit_box.tscn" id="2_egddf"]
+[ext_resource type="PackedScene" uid="uid://chqll71vii5yb" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="3_3xcr1"]
 [ext_resource type="Texture2D" uid="uid://b8bduxd7punv5" path="res://Player/Sprites/Shadow.png" id="4_fuxiv"]
 [ext_resource type="Texture2D" uid="uid://djofci7i2ecbn" path="res://Enemies/Goblin/goblin.png" id="5_egddf"]
 [ext_resource type="Script" uid="uid://cg8o7blouk1jc" path="res://Enemies/Scripts/enemy_state_machine.gd" id="5_hvprn"]
@@ -51,7 +51,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/AttackHurtBox:position")
+tracks/2/path = NodePath("Sprite2D/AttackHitBox:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -81,7 +81,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AttackHurtBox:position")
+tracks/1/path = NodePath("Sprite2D/AttackHitBox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -111,7 +111,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AttackHurtBox:position")
+tracks/1/path = NodePath("Sprite2D/AttackHitBox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -141,7 +141,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AttackHurtBox:position")
+tracks/1/path = NodePath("Sprite2D/AttackHitBox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -692,16 +692,16 @@ collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_e6gxc")
 
-[node name="HurtBox" parent="." unique_id=1852879719 instance=ExtResource("2_egddf")]
+[node name="HitBox" parent="." unique_id=1852879719 instance=ExtResource("2_egddf")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1162340544]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1162340544]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_t1krp")
 debug_color = Color(0.7365347, 0.46944422, 5.7756904e-07, 0.41960785)
 
-[node name="HitBox" parent="." unique_id=26665899 instance=ExtResource("3_3xcr1")]
+[node name="HurtBox" parent="." unique_id=26665899 instance=ExtResource("3_3xcr1")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1113008924]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1113008924]
 light_mask = 256
 visibility_layer = 0
 position = Vector2(0, -7)
@@ -719,12 +719,12 @@ texture = ExtResource("5_egddf")
 hframes = 8
 vframes = 3
 
-[node name="AttackHurtBox" parent="Sprite2D" unique_id=1395499591 instance=ExtResource("2_egddf")]
+[node name="AttackHitBox" parent="Sprite2D" unique_id=1395499591 instance=ExtResource("2_egddf")]
 position = Vector2(0, 11)
 monitoring = false
 damage = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox" unique_id=1206834135]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHitBox" unique_id=1206834135]
 shape = SubResource("CircleShape2D_t1krp")
 debug_color = Color(0.7365347, 0.46944422, 5.7756904e-07, 0.41960785)
 
@@ -760,7 +760,7 @@ drops = Array[ExtResource("10_p7r07")]([SubResource("Resource_67htc")])
 [node name="Chase" type="Node" parent="EnemyStateMachine" unique_id=175970464 node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
 script = ExtResource("14_fuxiv")
 vision_area = NodePath("../../VisionArea")
-attack_area = NodePath("../../Sprite2D/AttackHurtBox")
+attack_area = NodePath("../../Sprite2D/AttackHitBox")
 next_state = NodePath("../idle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=715979421]
