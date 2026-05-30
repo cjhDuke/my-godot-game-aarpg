@@ -253,6 +253,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_5p2pt")
 
 [node name="Dungeon01" type="TileMap" unique_id=1074030559]
+z_index = -1
 tile_set = SubResource("TileSet_yu6fw")
 format = 2
 script = ExtResource("2_5p2pt")

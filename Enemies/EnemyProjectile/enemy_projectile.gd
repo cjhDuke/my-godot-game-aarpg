@@ -30,7 +30,11 @@ func _physics_process(delta: float) -> void:
 	if lifetime <= 0.0:
 		_destroy()
 		return
-	global_position += direction * speed * delta
+	var next_position := global_position + direction * speed * delta
+	if _hits_wall_between(global_position, next_position):
+		_destroy()
+		return
+	global_position = next_position
 
 
 func configure(
@@ -60,6 +64,19 @@ func _on_body_entered(_body: Node2D) -> void:
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area is HurtBox:
 		_destroy.call_deferred()
+
+
+func _hits_wall_between(from_position: Vector2, to_position: Vector2) -> bool:
+	if from_position == to_position:
+		return false
+	var query := PhysicsRayQueryParameters2D.create(
+			from_position,
+			to_position,
+			WALL_COLLISION_MASK
+	)
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	return not get_world_2d().direct_space_state.intersect_ray(query).is_empty()
 
 
 func _destroy() -> void:
